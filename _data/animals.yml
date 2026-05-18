@@ -1,0 +1,54 @@
+- name: Boer Cross Goat
+  type: Goat
+  tag: SF-G01
+  image: /pictures/PXL_20250717_195136662.MP.jpg
+  price: 450
+  weight_price: 12
+  weight: 38
+  status: Available
+  description: Friendly young Boer cross with a sturdy build and good pasture manners.
+- name: Nubian Dairy Goat
+  type: Goat
+  tag: SF-G02
+  image: /pictures/PXL_20250804_184218771.jpg
+  price: 500
+  weight_price: 12
+  weight: 42
+  status: Available
+  description: Calm Nubian doe with long ears, bright eyes, and a gentle temperament.
+- name: Katahdin Lamb
+  type: Lamb
+  tag: SF-L01
+  image: /pictures/lamb-katahdin.jpg
+  price: 425
+  weight_price: 12
+  weight: 34
+  status: Available
+  description: Pasture-raised lamb, clean coated and ready for farm pickup.
+- name: Dorper Lamb
+  type: Lamb
+  tag: SF-L02
+  image: /pictures/lamb-dorper.jpg
+  price: 475
+  weight_price: 12
+  weight: 39
+  status: Available
+  description: Solid Dorper lamb with good frame and easy handling.
+- name: Layer Chicken Pair
+  type: Chicken
+  tag: SF-C01
+  image: /pictures/chickens-layer-pair.jpg
+  price: 300
+  weight_price: 12
+  weight: 8
+  status: Available
+  description: Healthy pair of young laying chickens for backyard egg production.
+- name: Farm Chicken Bundle
+  type: Chicken
+  tag: SF-C02
+  image: /pictures/chickens-farm-bundle.jpg
+  price: 350
+  weight_price: 12
+  weight: 12
+  status: Available
+  description: Small flock starter bundle with hardy birds raised on farm feed.

@@ -1,0 +1,146 @@
+---
+layout: default
+title: SUTA Farm
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/store.css' | relative_url }}">
+
+<main class="store">
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <p class="eyebrow">Pasture-raised livestock for pickup</p>
+      <h1>SUTA Farm</h1>
+      <p class="hero__copy">
+        Reserve healthy goats, lambs, and chickens directly from the farm.
+        Most animals are priced from $300-$500, with meat orders also available at $12 per pound.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--light" href="#inventory">Shop animals</a>
+        <a class="button button--ghost" href="#checkout">Buy from the site</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" id="inventory">
+    <div class="section__inner">
+      <div class="section__heading">
+        <div>
+          <p class="eyebrow">Available now</p>
+          <h2>Goats, lambs, and chickens</h2>
+        </div>
+        <div class="filters" aria-label="Filter animals">
+          <button class="filter is-active" type="button" data-filter="All">All</button>
+          <button class="filter" type="button" data-filter="Goat">Goats</button>
+          <button class="filter" type="button" data-filter="Lamb">Lambs</button>
+          <button class="filter" type="button" data-filter="Chicken">Chickens</button>
+        </div>
+      </div>
+
+      <div class="inventory">
+        {% for animal in site.data.animals %}
+        <article class="animal-card" data-animal-type="{{ animal.type }}">
+          <img src="{{ animal.image | relative_url }}" alt="{{ animal.name }} at SUTA Farm">
+          <div class="card__body">
+            <div class="card__meta">
+              <span>{{ animal.type }}</span>
+              <span>{{ animal.status }} - {{ animal.tag }}</span>
+            </div>
+            <h3>{{ animal.name }}</h3>
+            <p>{{ animal.description }}</p>
+            <p class="price">${{ animal.price }}</p>
+            <p class="per-pound">Also available at ${{ animal.weight_price }} per pound, estimated {{ animal.weight }} lb.</p>
+            <div class="card__actions">
+              <button class="button buy-button" type="button" data-select-animal="{{ animal.tag }}">Buy or reserve</button>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="details">
+        <div class="detail">
+          <strong>Price range</strong>
+          <span>$300-$500 per listed animal, depending on type and size.</span>
+        </div>
+        <div class="detail">
+          <strong>Meat orders</strong>
+          <span>$12 per pound for eligible goat, lamb, or chicken orders.</span>
+        </div>
+        <div class="detail">
+          <strong>Pickup</strong>
+          <span>{{ site.farm_location }}. Delivery can be discussed after checkout.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" id="checkout">
+    <div class="section__inner checkout">
+      <div>
+        <p class="eyebrow">Farm checkout</p>
+        <h2>Buy from SUTA Farm</h2>
+        <p class="checkout__note">
+          Send your order through the site and SUTA Farm will confirm pickup, final weight,
+          and payment details. Use the Square button for card payment once the farm confirms the exact animal and final weight.
+        </p>
+        <p class="muted">Questions? Call {{ site.phone }} or email {{ site.email }}.</p>
+      </div>
+
+      <form id="order-form">
+        <label for="animal">Animal
+          <select id="animal" name="animal">
+            {% for animal in site.data.animals %}
+            <option value="{{ animal.tag }}" data-price="{{ animal.price }}" data-weight="{{ animal.weight }}" data-weight-price="{{ animal.weight_price }}">
+              {{ animal.name }} - {{ animal.tag }}
+            </option>
+            {% endfor %}
+          </select>
+        </label>
+
+        <label for="purchase-method">Purchase option
+          <select id="purchase-method" name="purchase-method">
+            <option value="flat">Listed animal price</option>
+            <option value="pound">$12 per pound</option>
+          </select>
+        </label>
+
+        <div class="total-box" aria-live="polite">
+          Estimated total
+          <strong id="order-total">$450</strong>
+        </div>
+
+        <label for="name">Name
+          <input id="name" name="name" autocomplete="name" required>
+        </label>
+
+        <label for="email">Email
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </label>
+
+        <label for="phone">Phone
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
+        </label>
+
+        <label for="notes">Order notes
+          <textarea id="notes" name="notes" placeholder="Preferred pickup day, delivery questions, or processing requests"></textarea>
+        </label>
+
+        <div class="checkout__actions">
+          <button class="button button--secondary" type="submit">Place order request</button>
+          <a class="button button--square" href="{{ site.square_payment_link }}" target="_blank" rel="noopener">Pay with Square</a>
+          <a class="button" href="mailto:{{ site.email }}?subject=SUTA%20Farm%20Order">Email SUTA Farm</a>
+        </div>
+
+        <div id="confirmation" class="confirmation" tabindex="-1">
+          Order request received on this page. SUTA Farm will confirm availability and payment before pickup.
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="{{ '/assets/js/store.js' | relative_url }}"></script>

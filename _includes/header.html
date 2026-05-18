@@ -1,0 +1,15 @@
+<header class="site-header farm-header" role="banner">
+  <div class="farm-header__inner">
+    <a class="farm-brand" rel="author" href="{{ '/' | relative_url }}">
+      <img src="{{ '/pictures/logo.jpg' | relative_url }}" alt="Suta Farm logo">
+      <span>{{ site.title | escape }}</span>
+    </a>
+
+    <nav class="farm-nav" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}">Shop</a>
+      <a href="{{ '/about/' | relative_url }}">About Us</a>
+      <a href="{{ '/donate/' | relative_url }}">Donate</a>
+      <a class="farm-nav__button" href="{{ '/#checkout' | relative_url }}">Buy</a>
+    </nav>
+  </div>
+</header>
